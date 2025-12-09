@@ -1,13 +1,54 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display&display=swap");
+/* ---------------------------
+   Design tokens
+--------------------------- */
+:root {
+	/* colors */
+	--color-page-bg: #d8eacb;
+	--color-primary: #72a84a;
+	--color-surface: #f2f2f2;
+	--color-text: #000;
+
+	/* typography */
+	--font-sans: "Montserrat", sans-serif;
+
+	--font-xs: 0.75rem;
+	--font-sm: 0.875rem;
+	--font-base: 1rem;
+	--font-md: 1.25rem;
+	--font-lg: 1.563rem;
+	--font-xl: 1.953rem;
+	--font-2xl: 2.441rem;
+	--font-3xl: 3.052rem;
+
+	/* spacing scale (rule of 4) */
+	--space-xxs: 0.25rem; /* 4px  */
+	--space-xs: 0.5rem; /* 8px  */
+	--space-sm: 0.75rem; /* 12px */
+	--space-md: 1rem; /* 16px */
+	--space-lg: 1.5rem; /* 24px */
+	--space-xl: 2rem; /* 32px */
+	--space-2xl: 3rem; /* 48px */
+	--space-3xl: 4rem; /* 64px */
+	--space-4xl: 5rem; /* 80px */
+}
+
+/* ---------------------------
+   Page
+--------------------------- */
 
 body {
-	background: #d8eacb;
-	font-family: "Montserrat", sans-serif;
-	color: #000;
+	background: var(--color-page-bg);
+	font-family: var(--font-sans);
+	color: var(--color-text);
 }
+
+/* ---------------------------
+   Global-ish elements
+--------------------------- */
 
 a {
 	text-decoration: none;
+	color: inherit;
 }
 
 ul {
@@ -18,13 +59,19 @@ ul {
 
 img {
 	width: 100%;
+	display: block;
 }
+
+/* ---------------------------
+   Header
+--------------------------- */
 
 header {
 	display: flex;
 	justify-content: space-between;
-	background-color: #eeee;
-	padding: 0.5em;
+	align-items: center;
+	background-color: #eee;
+	padding: var(--space-xs);
 }
 
 .logo {
@@ -35,23 +82,33 @@ header {
 	cursor: pointer;
 }
 
+/* ---------------------------
+   Navigation
+--------------------------- */
+
 nav ul {
-	visibility: hidden;
 	opacity: 0;
 	position: fixed;
 	width: 100%;
 	top: 0;
 	left: 0;
-	background: #72a84a;
+	background: var(--color-primary);
 	height: 100vh;
-	padding-top: 5em;
+	padding-top: var(--space-4xl);
 	z-index: 100;
+	transform: translateX(100%); /* start offscreen RIGHT */
+	transition: transform 0.3s ease-in-out, opacity 0.3s ease;
+}
+
+.open-nav {
+	opacity: 1;
+	transform: translateX(0);
 }
 
 nav ul li a {
-	font-size: 1.5rem;
+	font-size: var(--font-xl);
 	font-weight: bold;
-	padding: 1rem;
+	padding: var(--space-md);
 	display: block;
 }
 
@@ -59,7 +116,115 @@ nav ul li a {
 	width: 30px;
 	height: 30px;
 	position: absolute;
-	right: 1rem;
-	top: 1rem;
+	right: var(--space-md);
+	top: var(--space-md);
 	padding: 0;
+}
+
+/* ---------------------------
+   Hero
+--------------------------- */
+
+.forest-hero {
+	background: url("images/forest.jpg") center / cover no-repeat fixed;
+	color: var(--color-surface);
+}
+
+.wrapper {
+	padding: var(--space-xs);
+	text-align: center;
+}
+
+.no-padding {
+	padding: 0;
+}
+
+.subtitle {
+	padding: var(--space-2xl) 0 var(--space-xs);
+}
+
+h1 span {
+	display: block;
+	font-size: var(--font-3xl);
+}
+
+/* CTA button */
+.cta {
+	color: var(--color-surface);
+	background: var(--color-primary);
+	font-size: var(--font-lg);
+	font-weight: bold;
+	padding: var(--space-md);
+	margin-top: var(--space-md);
+	margin-bottom: var(--space-2xl);
+	display: inline-block;
+}
+
+/* ---------------------------
+   Featured cabins
+--------------------------- */
+
+ul.featured-cabins {
+	width: 60%;
+	margin: var(--space-2xl) auto;
+}
+
+ul.featured-cabins li {
+	margin-bottom: var(--space-3xl);
+}
+
+.cabin-img {
+	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+	margin-bottom: var(--space-lg);
+}
+
+.cabin-title {
+	font-size: var(--font-lg);
+	font-weight: bold;
+	margin-bottom: var(--space-md);
+}
+
+.cabin-desc,
+ul.features li p,
+.left p {
+	line-height: 1.9rem;
+	font-size: var(--font-md);
+	margin-bottom: var(--space-xl);
+}
+
+.cabin-cta {
+	display: flex;
+	gap: var(--space-sm);
+	justify-content: space-between;
+	margin-top: var(--space-md);
+	font-weight: bold;
+	font-size: var(--font-md);
+	position: relative;
+}
+
+.cabin-cta img {
+	width: 1rem;
+}
+
+.cabin-cta::after {
+	position: absolute;
+	content: "";
+	bottom: -12px;
+	background: var(--color-surface);
+	width: 100%;
+	height: 1px;
+}
+
+/* Amenities */
+.feature-container {
+	background: #1a1a1a;
+	color: var(--color-surface);
+}
+ul.features {
+	margin: 3em auto;
+	width: 70%;
+}
+
+ul.features li img {
+	width: 40px;
 }
