@@ -6,7 +6,7 @@
 	--color-page-bg: #d8eacb;
 	--color-primary: #72a84a;
 	--color-surface: #f2f2f2;
-	--color-text: #000;
+	--color-text: #1a1a1a;
 
 	/* typography */
 	--font-sans: "Montserrat", sans-serif;
@@ -40,6 +40,7 @@ body {
 	background: var(--color-page-bg);
 	font-family: var(--font-sans);
 	color: var(--color-text);
+	font-size: var(--font-md);
 }
 
 /* ---------------------------
@@ -59,7 +60,6 @@ ul {
 
 img {
 	width: 100%;
-	display: block;
 }
 
 /* ---------------------------
@@ -76,6 +76,7 @@ header {
 
 .logo {
 	font-weight: bold;
+	color: #1a1a1a;
 }
 
 .menu {
@@ -158,6 +159,7 @@ h1 span {
 	margin-top: var(--space-md);
 	margin-bottom: var(--space-2xl);
 	display: inline-block;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
 }
 
 /* ---------------------------
@@ -181,14 +183,13 @@ ul.featured-cabins li {
 .cabin-title {
 	font-size: var(--font-lg);
 	font-weight: bold;
-	margin-bottom: var(--space-md);
+	margin-bottom: var(--space-sm);
 }
 
 .cabin-desc,
 ul.features li p,
 .left p {
 	line-height: 1.9rem;
-	font-size: var(--font-md);
 	margin-bottom: var(--space-xl);
 }
 
@@ -198,7 +199,6 @@ ul.features li p,
 	justify-content: space-between;
 	margin-top: var(--space-md);
 	font-weight: bold;
-	font-size: var(--font-md);
 	position: relative;
 }
 
@@ -220,11 +220,132 @@ ul.features li p,
 	background: #1a1a1a;
 	color: var(--color-surface);
 }
-ul.features {
-	margin: 3em auto;
+ul.features,
+.last-container {
+	margin: var(--space-2xl) auto;
 	width: 70%;
+}
+
+.features li h2,
+ul.features li img {
+	margin-bottom: var(--space-sm);
+}
+
+.features li p,
+.bio p {
+	line-height: 1.9rem;
 }
 
 ul.features li img {
 	width: 40px;
+}
+
+/* Testimonials */
+
+.main-quote {
+	font-family: "Playfair", serif;
+	font-size: var(--font-2xl);
+	margin-bottom: var(--space-sm);
+	font-style: italic;
+}
+
+.main-cite {
+	margin-bottom: var(--space-2xl);
+	display: block;
+
+	color: #3b3b3b;
+}
+
+.bio h3 {
+	font-size: var(--font-lg);
+	margin-bottom: var(--space-sm);
+}
+
+cite {
+	margin-bottom: 3em;
+	display: block;
+}
+
+ul.testimonials {
+	margin: 3em 0;
+}
+
+ul.testimonials li {
+	margin-bottom: 3em;
+}
+
+.test-img,
+.test-desc {
+	margin-bottom: var(--space-sm);
+}
+
+.test-img {
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+}
+
+.test-desc {
+	font-size: var(--font-lg);
+	font-family: "Playfair", serif;
+	font-style: italic;
+}
+
+.test-auth {
+	font-weight: bold;
+	color: #3b3b3b;
+	font-size: var(--font-sm);
+}
+
+.last-section {
+	position: relative; /* positioning context for the fern */
+}
+
+.fern {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	width: 80%;
+	opacity: 0.1;
+	margin: 0;
+}
+
+@media (min-width: 550px) {
+	.menu,
+	.exit {
+		display: none;
+	}
+	header {
+		padding: 1em;
+	}
+	ul.nav {
+		visibility: unset;
+		opacity: 1;
+		background: none;
+		display: flex;
+		margin: 0;
+		padding: 0;
+		position: unset;
+		height: auto;
+		transform: none; /* 👈 bring it back on-screen */
+		transition: none;
+	}
+	ul.nav li a {
+		font-size: 0.9em;
+		padding: 0 1em;
+		font-weight: normal;
+		transform: none;
+		color: var(--color-text);
+	}
+	ul.nav li:last-child a {
+		padding-right: 0;
+	}
+	ul.nav .active a {
+		font-weight: bold;
+	}
+	ul.nav .res a {
+		color: var(--color-primary);
+		font-weight: bold;
+	}
 }
