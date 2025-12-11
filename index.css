@@ -1,5 +1,5 @@
 /* ---------------------------
-   Design tokens
+   Design Tokens
 --------------------------- */
 :root {
 	/* colors */
@@ -20,6 +20,9 @@
 	--font-2xl: 2.441rem;
 	--font-3xl: 3.052rem;
 
+	/* line-height token */
+	--line-relaxed: 1.9rem;
+
 	/* spacing scale (rule of 4) */
 	--space-xxs: 0.25rem; /* 4px  */
 	--space-xs: 0.5rem; /* 8px  */
@@ -30,6 +33,11 @@
 	--space-2xl: 3rem; /* 48px */
 	--space-3xl: 4rem; /* 64px */
 	--space-4xl: 5rem; /* 80px */
+
+	/* sizing + visual tokens */
+	--size-icon-lg: 40px;
+	--border-thin: 1px;
+	--shadow-lg: 10px 10px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* ---------------------------
@@ -41,6 +49,14 @@ body {
 	font-family: var(--font-sans);
 	color: var(--color-text);
 	font-size: var(--font-md);
+}
+
+/* Consistent vertical rhythm across main sections
+   - first section: top + bottom padding
+   - others: bottom padding only (so 1x --space-4xl between sections)
+*/
+main > section {
+	padding-block: var(--space-4xl);
 }
 
 /* ---------------------------
@@ -60,66 +76,88 @@ ul {
 
 img {
 	width: 100%;
+	display: block;
+}
+
+/* generic centered wrapper */
+.wrapper {
+	max-width: 1200px;
+	margin-inline: auto;
+	padding-inline: var(--space-2xl);
+}
+
+/* flex helper */
+.flex {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-2xl);
+}
+
+/* no wrap helper */
+.no-wrap {
+	white-space: nowrap;
 }
 
 /* ---------------------------
-   Header
+   Header / Nav
 --------------------------- */
 
-header {
+.site-header {
+	background-color: #eee; /* full-width bar */
+}
+
+.header-inner {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: #eee;
-	padding: var(--space-xs);
+	padding-block: var(--space-xs);
 }
 
 .logo {
 	font-weight: bold;
-	color: #1a1a1a;
+	color: var(--color-text);
 }
 
-.menu {
+/* hamburger / close buttons */
+.menu,
+.exit-btn {
+	background: none;
+	border: none;
+	padding: 0;
 	cursor: pointer;
 }
 
-/* ---------------------------
-   Navigation
---------------------------- */
-
-nav ul {
+/* mobile nav overlay */
+.site-nav .nav {
 	opacity: 0;
 	position: fixed;
+	inset: 0;
 	width: 100%;
-	top: 0;
-	left: 0;
-	background: var(--color-primary);
 	height: 100vh;
+	background: var(--color-primary);
 	padding-top: var(--space-4xl);
 	z-index: 100;
 	transform: translateX(100%); /* start offscreen RIGHT */
 	transition: transform 0.3s ease-in-out, opacity 0.3s ease;
 }
 
-.open-nav {
+.site-nav .nav.open-nav {
 	opacity: 1;
 	transform: translateX(0);
 }
 
-nav ul li a {
-	font-size: var(--font-xl);
+.site-nav .nav li a {
+	font-size: var(--font-sm);
 	font-weight: bold;
 	padding: var(--space-md);
 	display: block;
+	color: var(--color-surface);
 }
 
-.exit a {
-	width: 30px;
-	height: 30px;
+.exit {
 	position: absolute;
 	right: var(--space-md);
 	top: var(--space-md);
-	padding: 0;
 }
 
 /* ---------------------------
@@ -131,17 +169,19 @@ nav ul li a {
 	color: var(--color-surface);
 }
 
-.wrapper {
-	padding: var(--space-xs);
-	text-align: center;
+.hero {
+	padding-bottom: var(--space-2xl);
 }
 
-.no-padding {
-	padding: 0;
+.main-copy {
+	text-align: center;
+	background-color: rgba(0, 0, 0, 0.721);
+	padding: 2rem 1rem;
 }
 
 .subtitle {
-	padding: var(--space-2xl) 0 var(--space-xs);
+	margin-bottom: var(--space-sm);
+	padding: 0;
 }
 
 h1 span {
@@ -156,8 +196,8 @@ h1 span {
 	font-size: var(--font-lg);
 	font-weight: bold;
 	padding: var(--space-md);
-	margin-top: var(--space-md);
-	margin-bottom: var(--space-2xl);
+	margin-top: var(--space-2xl);
+	margin-bottom: 0;
 	display: inline-block;
 	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
 }
@@ -166,17 +206,14 @@ h1 span {
    Featured cabins
 --------------------------- */
 
-ul.featured-cabins {
-	width: 60%;
-	margin: var(--space-2xl) auto;
-}
-
-ul.featured-cabins li {
-	margin-bottom: var(--space-3xl);
+.featured-cabins {
+	margin-top: var(--space-3xl);
+	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.721), transparent);
+	padding: 2em 1em;
 }
 
 .cabin-img {
-	box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
+	box-shadow: var(--shadow-lg);
 	margin-bottom: var(--space-lg);
 }
 
@@ -187,9 +224,9 @@ ul.featured-cabins li {
 }
 
 .cabin-desc,
-ul.features li p,
-.left p {
-	line-height: 1.9rem;
+.features li p,
+.bio p {
+	line-height: var(--line-relaxed);
 	margin-bottom: var(--space-xl);
 }
 
@@ -197,9 +234,11 @@ ul.features li p,
 	display: flex;
 	gap: var(--space-sm);
 	justify-content: space-between;
-	margin-top: var(--space-md);
+	margin: var(--space-md) 0 var(--space-2xl) 0;
 	font-weight: bold;
 	position: relative;
+	align-items: center;
+	padding-bottom: var(--space-sm);
 }
 
 .cabin-cta img {
@@ -209,73 +248,88 @@ ul.features li p,
 .cabin-cta::after {
 	position: absolute;
 	content: "";
-	bottom: -12px;
+	bottom: 0; /* ~12px, one-off positional tweak */
 	background: var(--color-surface);
 	width: 100%;
-	height: 1px;
+	height: var(--border-thin);
 }
 
-/* Amenities */
+/* ---------------------------
+   Amenities (middle section)
+--------------------------- */
+
 .feature-container {
-	background: #1a1a1a;
+	background: var(--color-text);
 	color: var(--color-surface);
 }
-ul.features,
-.last-container {
-	margin: var(--space-2xl) auto;
-	width: 70%;
-}
 
-.features li h2,
-ul.features li img {
+.features-header {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: var(--space-sm);
 	margin-bottom: var(--space-sm);
 }
 
-.features li p,
-.bio p {
-	line-height: 1.9rem;
+.features {
+	text-align: center;
 }
 
-ul.features li img {
-	width: 40px;
+/* vertical spacing between amenities on small screens */
+
+.features li img {
+	width: var(--size-icon-lg);
 }
 
-/* Testimonials */
+/* ---------------------------
+   Testimonials / last section
+--------------------------- */
+
+.last-section {
+	position: relative;
+}
+
+.last-container {
+	text-align: left;
+}
 
 .main-quote {
 	font-family: "Playfair", serif;
 	font-size: var(--font-2xl);
-	margin-bottom: var(--space-sm);
+	margin-bottom: var(--space-md);
 	font-style: italic;
+	text-align: center;
 }
 
 .main-cite {
-	margin-bottom: var(--space-2xl);
+	margin-bottom: var(--space-4xl);
 	display: block;
-
 	color: #3b3b3b;
+	text-align: center;
+	font-size: var(--font-lg);
 }
 
-.bio h3 {
+.bio h2 {
 	font-size: var(--font-lg);
 	margin-bottom: var(--space-sm);
 }
 
-cite {
-	margin-bottom: 3em;
-	display: block;
+.testimonials {
+	display: flex;
+	flex-direction: column;
 }
 
-ul.testimonials {
-	margin: 3em 0;
+.testimonials li + li {
+	margin-top: var(--space-2xl);
 }
 
-ul.testimonials li {
-	margin-bottom: 3em;
+.testimonial {
+	text-align: center;
 }
 
 .test-img,
 .test-desc {
+	margin-inline: auto;
 	margin-bottom: var(--space-sm);
 }
 
@@ -297,10 +351,7 @@ ul.testimonials li {
 	font-size: var(--font-sm);
 }
 
-.last-section {
-	position: relative; /* positioning context for the fern */
-}
-
+/* decorative fern */
 .fern {
 	position: absolute;
 	bottom: 0;
@@ -309,93 +360,134 @@ ul.testimonials li {
 	width: 80%;
 	opacity: 0.1;
 	margin: 0;
+	pointer-events: none;
 }
 
+/* ---------------------------
+   Media queries
+--------------------------- */
+
 @media (min-width: 550px) {
+	/* hide mobile menu buttons */
 	.menu,
 	.exit {
 		display: none;
 	}
-	header {
-		padding: 1em;
-	}
-	ul.nav {
-		visibility: unset;
+
+	.site-nav .nav {
 		opacity: 1;
-		background: none;
-		display: flex;
-		margin: 0;
-		padding: 0;
-		position: unset;
+		position: static;
 		height: auto;
-		transform: none; /* 👈 bring it back on-screen */
-		transition: none;
-	}
-	ul.nav li a {
-		font-size: 0.9em;
-		padding: 0 1em;
-		font-weight: normal;
+		background: none;
 		transform: none;
+		padding-top: 0;
+		display: flex;
+		align-items: center;
+	}
+
+	.site-nav .nav li a {
+		padding: 0 var(--space-md);
+		font-weight: normal;
 		color: var(--color-text);
 	}
-	ul.nav li:last-child a {
+
+	.site-nav .nav li:last-child a {
 		padding-right: 0;
 	}
-	ul.nav .active a {
+
+	.site-nav .nav .active a {
 		font-weight: bold;
 	}
-	ul.nav .res a {
+
+	.site-nav .nav .res a {
 		color: var(--color-primary);
 		font-weight: bold;
 	}
-	ul.featured-cabins {
-		width: 90%;
+
+	/* cabin + amenities into grids, still within wrapper width */
+	.featured-cabins,
+	.features {
 		display: grid;
-		grid-template-columns: repeat(3, auto);
-		grid-gap: 3em;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: var(--space-2xl);
+	}
+
+	.cabin-cta {
+		margin-bottom: 0;
 	}
 }
 
 @media (min-width: 900px) {
-	.wrapper {
+	/* full-width header bar, custom padding */
+	.site-header .wrapper {
+		max-width: none;
+		margin-inline: 0;
+		padding: var(--space-md) var(--space-lg);
+	}
+
+	.flex {
+		flex-direction: row;
+		align-items: flex-start;
+		gap: var(--space-4xl);
+	}
+
+	.main-copy {
+		width: 100%;
 		text-align: left;
 	}
-	.flex {
-		display: flex;
-	}
-	.hero {
-		padding: 8em 4em;
-	}
 
-	.last-container {
-		padding: 0 4em;
-	}
-	.main-copy {
-		width: 40%;
-	}
-
-	p.subtitle {
-		margin: 0 0 1em;
+	.subtitle {
+		margin: 0 0 var(--space-lg);
 		padding: 0;
 	}
+
 	h1 {
 		font-size: var(--font-2xl);
 		margin-bottom: var(--space-2xl);
 	}
-	ul.featured-cabins {
-		width: 70%;
-		margin-top: 0;
+
+	.featured-cabins {
+		margin-top: 0; /* aligns grid vertically with hero text on desktop */
+		padding-top: 0;
 	}
-	.main-quote,
-	.main-cite {
-		text-align: center;
+
+	.features-header {
+		align-items: flex-start;
 	}
+
+	.features {
+		text-align: left;
+	}
+
 	.main-quote {
-		font-size: 3em;
-		margin-top: 2em;
+		font-size: var(--font-3xl);
+		margin-top: var(--space-2xl);
 	}
+
 	.main-cite {
-		font-size: 1.5em;
-		margin-bottom: 3em;
+		font-size: var(--font-lg);
+		margin-bottom: var(--space-4xl);
+	}
+
+	.bio p {
+		max-width: 60ch;
+	}
+
+	.testimonials {
+		width: 100%;
+	}
+
+	.testimonial {
+		display: flex;
+		gap: var(--space-lg);
+		justify-content: center;
+		align-items: flex-start;
+		background-color: var(--color-surface);
+		padding: var(--space-lg);
+		text-align: left;
+	}
+
+	.fern {
+		width: 20%;
 	}
 }
