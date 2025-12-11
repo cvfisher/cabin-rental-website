@@ -103,7 +103,21 @@ img {
 --------------------------- */
 
 .site-header {
-	background-color: #eee; /* full-width bar */
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.721);
+	z-index: 10;
+	transition: transform 0.25s ease;
+}
+
+.site-header--hidden {
+	transform: translateY(-100%);
+}
+
+.site-header .wrapper {
+	padding-inline: var(--space-sm);
 }
 
 .header-inner {
@@ -115,7 +129,7 @@ img {
 
 .logo {
 	font-weight: bold;
-	color: var(--color-text);
+	color: var(--color-surface);
 }
 
 /* hamburger / close buttons */
@@ -147,7 +161,7 @@ img {
 }
 
 .site-nav .nav li a {
-	font-size: var(--font-sm);
+	font-size: var(--font-2xl);
 	font-weight: bold;
 	padding: var(--space-md);
 	display: block;
@@ -163,6 +177,9 @@ img {
 /* ---------------------------
    Hero
 --------------------------- */
+.forest-hero .wrapper.hero {
+	padding-top: var(--space-2xl);
+}
 
 .forest-hero {
 	background: url("images/forest.jpg") center / cover no-repeat fixed;
@@ -187,6 +204,7 @@ img {
 h1 span {
 	display: block;
 	font-size: var(--font-3xl);
+	clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
 }
 
 /* CTA button */
@@ -261,18 +279,18 @@ h1 span {
 .feature-container {
 	background: var(--color-text);
 	color: var(--color-surface);
+	text-align: left;
 }
 
 .features-header {
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	gap: var(--space-sm);
 	margin-bottom: var(--space-sm);
 }
 
-.features {
-	text-align: center;
+.features li:last-child p {
+	margin-bottom: 0;
 }
 
 /* vertical spacing between amenities on small screens */
@@ -374,6 +392,10 @@ h1 span {
 		display: none;
 	}
 
+	.wrapper.hero {
+		margin-top: var(--space-2xl);
+	}
+
 	.site-nav .nav {
 		opacity: 1;
 		position: static;
@@ -388,7 +410,8 @@ h1 span {
 	.site-nav .nav li a {
 		padding: 0 var(--space-md);
 		font-weight: normal;
-		color: var(--color-text);
+		color: var(--color-surface);
+		font-size: var(--font-base);
 	}
 
 	.site-nav .nav li:last-child a {
@@ -432,8 +455,9 @@ h1 span {
 	}
 
 	.main-copy {
-		width: 100%;
+		width: 40%;
 		text-align: left;
+		margin-bottom: var(--space-2xl);
 	}
 
 	.subtitle {
@@ -457,6 +481,9 @@ h1 span {
 
 	.features {
 		text-align: left;
+	}
+	.features li p:last-child {
+		margin-bottom: var(--space-xl);
 	}
 
 	.main-quote {

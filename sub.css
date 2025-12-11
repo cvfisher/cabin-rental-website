@@ -1,0 +1,51 @@
+body {
+	background-color: var(--color-surface);
+}
+
+.sub-hero {
+	background: url("images/forest-bg-2.jpg");
+	background-size: cover;
+	height: 70vh;
+}
+
+.main-copy {
+	background: none;
+	text-align: left;
+}
+
+.featured-cabins {
+	background: none;
+}
+
+.bread-wrapper {
+	display: grid;
+
+	margin: 0 0 var(--space-sm) 0;
+}
+
+ul.breadcrumbs {
+	display: flex;
+	margin-bottom: var(--space-xs);
+	font-size: var(--font-base);
+}
+
+ul.breadcrumbs li a {
+	margin-right: var(--space-xs);
+	font-weight: bold;
+}
+
+.main-copy h1 {
+	margin: 0 0 var(--space-md) 0;
+}
+
+.sub-desc {
+	width: 60%;
+}
+
+.featured-cabins {
+	margin-top: 0;
+}
+
+.cabin-cta::after {
+	background: var(--color-text);
+}
