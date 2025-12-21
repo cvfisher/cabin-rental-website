@@ -182,7 +182,7 @@ img {
 }
 
 .forest-hero {
-	background: url("images/forest.jpg") center / cover no-repeat fixed;
+	background: url("/images/forest.jpg") center / cover no-repeat fixed;
 	color: var(--color-surface);
 }
 

@@ -3,46 +3,13 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="reset.css" />
-		<link rel="stylesheet" href="index.css" />
-		<link rel="stylesheet" href="sub.css" />
+		<link rel="stylesheet" href="/src/styles/reset.css" />
+		<link rel="stylesheet" href="/src/styles/index.css" />
+		<link rel="stylesheet" href="/src/styles/sub.css" />
 		<title>Scenic Forests</title>
 	</head>
 	<body>
-		<header class="site-header">
-			<div class="wrapper header-inner">
-				<a href="index.html" class="logo">scenic.forests</a>
-
-				<nav class="site-nav" aria-label="Primary navigation">
-					<button
-						class="menu"
-						id="menu-btn"
-						type="button"
-						aria-expanded="false"
-						aria-controls="nav"
-					>
-						<img src="images/menu.svg" alt="Open menu" />
-					</button>
-
-					<ul class="nav" id="nav">
-						<li class="exit">
-							<button
-								id="exit-btn"
-								class="exit-btn"
-								type="button"
-								aria-label="Close menu"
-							>
-								<img src="images/exit.svg" alt="" />
-							</button>
-						</li>
-						<li class="active"><a href="index.html">Home</a></li>
-						<li><a href="cabins.html">Cabins</a></li>
-						<li><a href="#">FAQ</a></li>
-						<li class="res"><a href="#">Reservations</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header>
+		{{> header isCabins=true}}
 
 		<main>
 			<section class="sub-hero" aria-labelledby="sub-hero-title">
@@ -50,11 +17,11 @@
 					<div class="main-copy sub-copy">
 						<div class="bread-wrapper">
 							<ul class="breadcrumbs">
-								<li><a href="index.html">Home</a></li>
-								<li>> Our Cabins</li>
+								<li><a href="/index.html">Home</a></li>
+								<li>&gt; Our Cabins</li>
 							</ul>
 						</div>
-						<h1>Our Cabins</h1>
+						<h1 id="sub-hero-title">Our Cabins</h1>
 						<p>
 							Lorem ipsum dolor sit, amet consectetur adipisicing elit.
 							Excepturi vero reprehenderit distinctio maiores tempora hic
@@ -64,206 +31,47 @@
 					</div>
 
 					<ul class="featured-cabins" aria-label="Featured cabins">
-						<li>
-							<article>
-								<a href="#">
-									<img
-										src="images/cabin1.jpg"
-										alt="Cabin by the forest"
-										class="cabin-img"
-									/>
-								</a>
-								<h2 class="cabin-title">Whispering Willows</h2>
-								<p class="cabin-desc">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Cumque odio unde fugiat error deserunt.
-								</p>
-
-								<a href="#" class="cabin-cta">
-									<span class="cabin-info">Cabin Info</span>
-									<img src="images/arrows-black.svg" alt="" />
-								</a>
-							</article>
-						</li>
-
-						<li>
-							<article>
-								<a href="#">
-									<img
-										src="images/cabin2.jpg"
-										alt="Cabin by a lake"
-										class="cabin-img"
-									/>
-								</a>
-								<h2 class="cabin-title">Whispering Willows</h2>
-								<p class="cabin-desc">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Cumque odio unde fugiat error deserunt.
-								</p>
-
-								<a href="#" class="cabin-cta">
-									<span class="cabin-info">Cabin Info</span>
-									<img src="images/arrows-black.svg" alt="" />
-								</a>
-							</article>
-						</li>
-
-						<li>
-							<article>
-								<a href="#">
-									<img
-										src="images/cabin3.jpg"
-										alt="Cabin among trees"
-										class="cabin-img"
-									/>
-								</a>
-								<h2 class="cabin-title">Whispering Willows</h2>
-								<p class="cabin-desc">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Cumque odio unde fugiat error deserunt.
-								</p>
-
-								<a href="#" class="cabin-cta">
-									<span class="cabin-info">Cabin Info</span>
-									<img src="images/arrows-black.svg" alt="" />
-								</a>
-							</article>
-						</li>
-						<li>
-							<article>
-								<a href="#">
-									<img
-										src="images/cabin1.jpg"
-										alt="Cabin by the forest"
-										class="cabin-img"
-									/>
-								</a>
-								<h2 class="cabin-title">Whispering Willows</h2>
-								<p class="cabin-desc">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Cumque odio unde fugiat error deserunt.
-								</p>
-
-								<a href="#" class="cabin-cta">
-									<span class="cabin-info">Cabin Info</span>
-									<img src="images/arrows-black.svg" alt="" />
-								</a>
-							</article>
-						</li>
-
-						<li>
-							<article>
-								<a href="#">
-									<img
-										src="images/cabin2.jpg"
-										alt="Cabin by a lake"
-										class="cabin-img"
-									/>
-								</a>
-								<h2 class="cabin-title">Whispering Willows</h2>
-								<p class="cabin-desc">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Cumque odio unde fugiat error deserunt.
-								</p>
-
-								<a href="#" class="cabin-cta">
-									<span class="cabin-info">Cabin Info</span>
-									<img src="images/arrows-black.svg" alt="" />
-								</a>
-							</article>
-						</li>
-
-						<li>
-							<article>
-								<a href="#">
-									<img
-										src="images/cabin3.jpg"
-										alt="Cabin among trees"
-										class="cabin-img"
-									/>
-								</a>
-								<h2 class="cabin-title">Whispering Willows</h2>
-								<p class="cabin-desc">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Cumque odio unde fugiat error deserunt.
-								</p>
-
-								<a href="#" class="cabin-cta">
-									<span class="cabin-info">Cabin Info</span>
-									<img src="images/arrows-black.svg" alt="" />
-								</a>
-							</article>
-						</li>
-						<li>
-							<article>
-								<a href="#">
-									<img
-										src="images/cabin1.jpg"
-										alt="Cabin by the forest"
-										class="cabin-img"
-									/>
-								</a>
-								<h2 class="cabin-title">Whispering Willows</h2>
-								<p class="cabin-desc">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Cumque odio unde fugiat error deserunt.
-								</p>
-
-								<a href="#" class="cabin-cta">
-									<span class="cabin-info">Cabin Info</span>
-									<img src="images/arrows-black.svg" alt="" />
-								</a>
-							</article>
-						</li>
-
-						<li>
-							<article>
-								<a href="#">
-									<img
-										src="images/cabin2.jpg"
-										alt="Cabin by a lake"
-										class="cabin-img"
-									/>
-								</a>
-								<h2 class="cabin-title">Whispering Willows</h2>
-								<p class="cabin-desc">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Cumque odio unde fugiat error deserunt.
-								</p>
-
-								<a href="#" class="cabin-cta">
-									<span class="cabin-info">Cabin Info</span>
-									<img src="images/arrows-black.svg" alt="" />
-								</a>
-							</article>
-						</li>
-
-						<li>
-							<article>
-								<a href="#">
-									<img
-										src="images/cabin3.jpg"
-										alt="Cabin among trees"
-										class="cabin-img"
-									/>
-								</a>
-								<h2 class="cabin-title">Whispering Willows</h2>
-								<p class="cabin-desc">
-									Lorem ipsum dolor sit amet consectetur adipisicing elit.
-									Cumque odio unde fugiat error deserunt.
-								</p>
-
-								<a href="#" class="cabin-cta">
-									<span class="cabin-info">Cabin Info</span>
-									<img src="images/arrows-black.svg" alt="" />
-								</a>
-							</article>
-						</li>
+						{{> cabin-card imgSrc="src/images/cabin1.jpg" imgAlt="Cabin by the
+						forest" title="Whispering Willows" desc="Lorem ipsum dolor sit amet
+						consectetur adipisicing elit. Cumque odio unde fugiat error
+						deserunt." arrowSrc="src/images/arrows-black.svg" }} {{> cabin-card
+						imgSrc="src/images/cabin2.jpg" imgAlt="Cabin by a lake"
+						title="Whispering Willows" desc="Lorem ipsum dolor sit amet
+						consectetur adipisicing elit. Cumque odio unde fugiat error
+						deserunt." arrowSrc="src/images/arrows-black.svg" }} {{> cabin-card
+						imgSrc="src/images/cabin3.jpg" imgAlt="Cabin among trees"
+						title="Whispering Willows" desc="Lorem ipsum dolor sit amet
+						consectetur adipisicing elit. Cumque odio unde fugiat error
+						deserunt." arrowSrc="/images/arrows-black.svg" }} {{> cabin-card
+						imgSrc="src/images/cabin1.jpg" imgAlt="Cabin by the forest"
+						title="Whispering Willows" desc="Lorem ipsum dolor sit amet
+						consectetur adipisicing elit. Cumque odio unde fugiat error
+						deserunt." arrowSrc="/images/arrows-black.svg" }} {{> cabin-card
+						imgSrc="src/images/cabin2.jpg" imgAlt="Cabin by a lake"
+						title="Whispering Willows" desc="Lorem ipsum dolor sit amet
+						consectetur adipisicing elit. Cumque odio unde fugiat error
+						deserunt." arrowSrc="/images/arrows-black.svg" }} {{> cabin-card
+						imgSrc="src/images/cabin3.jpg" imgAlt="Cabin among trees"
+						title="Whispering Willows" desc="Lorem ipsum dolor sit amet
+						consectetur adipisicing elit. Cumque odio unde fugiat error
+						deserunt." arrowSrc="/images/arrows-black.svg" }} {{> cabin-card
+						imgSrc="src/images/cabin1.jpg" imgAlt="Cabin by the forest"
+						title="Whispering Willows" desc="Lorem ipsum dolor sit amet
+						consectetur adipisicing elit. Cumque odio unde fugiat error
+						deserunt." arrowSrc="/images/arrows-black.svg" }} {{> cabin-card
+						imgSrc="src/images/cabin2.jpg" imgAlt="Cabin by a lake"
+						title="Whispering Willows" desc="Lorem ipsum dolor sit amet
+						consectetur adipisicing elit. Cumque odio unde fugiat error
+						deserunt." arrowSrc="/images/arrows-black.svg" }} {{> cabin-card
+						imgSrc="src/images/cabin3.jpg" imgAlt="Cabin among trees"
+						title="Whispering Willows" desc="Lorem ipsum dolor sit amet
+						consectetur adipisicing elit. Cumque odio unde fugiat error
+						deserunt." arrowSrc="/images/arrows-black.svg" }}
 					</ul>
 				</div>
 			</section>
 		</main>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
-		<script src="index.js"></script>
+
+		<script type="module" src="/src/main.js"></script>
 	</body>
 </html>

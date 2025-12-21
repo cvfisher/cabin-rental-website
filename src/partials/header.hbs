@@ -1,0 +1,39 @@
+<header class="site-header">
+	<div class="wrapper header-inner">
+		<a href="/index.html" class="logo">scenic.forests</a>
+
+		<nav class="site-nav" aria-label="Primary navigation">
+			<button
+				class="menu"
+				id="menu-btn"
+				type="button"
+				aria-expanded="false"
+				aria-controls="nav"
+				aria-label="Open menu"
+			>
+				<img src="/images/menu.svg" alt="" />
+			</button>
+
+			<ul class="nav" id="nav">
+				<li class="exit">
+					<button
+						id="exit-btn"
+						class="exit-btn"
+						type="button"
+						aria-label="Close menu"
+					>
+						<img src="./src/images/exit.svg" alt="" />
+					</button>
+				</li>
+				<li class="{{#if isHome}}active{{/if}}">
+					<a href="/index.html" {{#if isHome}}aria-current="page"{{/if}}>Home</a>
+				</li>
+				<li class="{{#if isCabins}}active{{/if}}">
+					<a href="/cabins.html" {{#if isCabins}}aria-current="page"{{/if}}>Cabins</a>
+				</li>
+				<li><a href="#">FAQ</a></li>
+				<li class="res"><a href="#">Reservations</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>

@@ -3,45 +3,12 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<link rel="stylesheet" href="reset.css" />
-		<link rel="stylesheet" href="index.css" />
+		<link rel="stylesheet" href="/src/styles/reset.css" />
+		<link rel="stylesheet" href="/src/styles/index.css" />
 		<title>Scenic Forests</title>
 	</head>
 	<body>
-		<header class="site-header">
-			<div class="wrapper header-inner">
-				<a href="index.html" class="logo">scenic.forests</a>
-
-				<nav class="site-nav" aria-label="Primary navigation">
-					<button
-						class="menu"
-						id="menu-btn"
-						type="button"
-						aria-expanded="false"
-						aria-controls="nav"
-					>
-						<img src="images/menu.svg" alt="Open menu" />
-					</button>
-
-					<ul class="nav" id="nav">
-						<li class="exit">
-							<button
-								id="exit-btn"
-								class="exit-btn"
-								type="button"
-								aria-label="Close menu"
-							>
-								<img src="images/exit.svg" alt="" />
-							</button>
-						</li>
-						<li class="active"><a href="index.html">Home</a></li>
-						<li><a href="cabins.html">Cabins</a></li>
-						<li><a href="#">FAQ</a></li>
-						<li class="res"><a href="#">Reservations</a></li>
-					</ul>
-				</nav>
-			</div>
-		</header>
+		{{> header isHome=true}}
 
 		<main>
 			<section class="forest-hero" aria-labelledby="hero-title">
@@ -54,75 +21,22 @@
 								<span>Beauties</span>
 								<span>Await&nbsp;you</span>
 							</h1>
-							<a href="cabins.html" class="cta">All Rentals</a>
+							<a href="/cabins.html" class="cta">All Rentals</a>
 						</div>
 
 						<ul class="featured-cabins" aria-label="Featured cabins">
-							<li>
-								<article>
-									<a href="#">
-										<img
-											src="images/cabin1.jpg"
-											alt="Cabin by the forest"
-											class="cabin-img"
-										/>
-									</a>
-									<h2 class="cabin-title">Whispering Willows</h2>
-									<p class="cabin-desc">
-										Lorem ipsum dolor sit amet consectetur adipisicing elit.
-										Cumque odio unde fugiat error deserunt.
-									</p>
-
-									<a href="#" class="cabin-cta">
-										<span class="cabin-info">Cabin Info</span>
-										<img src="images/arrows.svg" alt="" />
-									</a>
-								</article>
-							</li>
-
-							<li>
-								<article>
-									<a href="#">
-										<img
-											src="images/cabin2.jpg"
-											alt="Cabin by a lake"
-											class="cabin-img"
-										/>
-									</a>
-									<h2 class="cabin-title">Whispering Willows</h2>
-									<p class="cabin-desc">
-										Lorem ipsum dolor sit amet consectetur adipisicing elit.
-										Cumque odio unde fugiat error deserunt.
-									</p>
-
-									<a href="#" class="cabin-cta">
-										<span class="cabin-info">Cabin Info</span>
-										<img src="images/arrows.svg" alt="" />
-									</a>
-								</article>
-							</li>
-
-							<li>
-								<article>
-									<a href="#">
-										<img
-											src="images/cabin3.jpg"
-											alt="Cabin among trees"
-											class="cabin-img"
-										/>
-									</a>
-									<h2 class="cabin-title">Whispering Willows</h2>
-									<p class="cabin-desc">
-										Lorem ipsum dolor sit amet consectetur adipisicing elit.
-										Cumque odio unde fugiat error deserunt.
-									</p>
-
-									<a href="#" class="cabin-cta">
-										<span class="cabin-info">Cabin Info</span>
-										<img src="images/arrows.svg" alt="" />
-									</a>
-								</article>
-							</li>
+							{{> cabin-card imgSrc="/src/images/cabin1.jpg" imgAlt="Cabin by
+							the forest" title="Whispering Willows" desc="Lorem ipsum dolor sit
+							amet consectetur adipisicing elit. Cumque odio unde fugiat error
+							deserunt." arrowSrc="/images/arrows.svg" }} {{> cabin-card
+							imgSrc="/src/images/cabin2.jpg" imgAlt="Cabin by a lake"
+							title="Whispering Willows" desc="Lorem ipsum dolor sit amet
+							consectetur adipisicing elit. Cumque odio unde fugiat error
+							deserunt." arrowSrc="/images/arrows.svg" }} {{> cabin-card
+							imgSrc="/src/images/cabin3.jpg" imgAlt="Cabin among trees"
+							title="Whispering Willows" desc="Lorem ipsum dolor sit amet
+							consectetur adipisicing elit. Cumque odio unde fugiat error
+							deserunt." arrowSrc="/images/arrows.svg" }}
 						</ul>
 					</div>
 				</div>
@@ -133,7 +47,7 @@
 					<ul class="features">
 						<li>
 							<div class="features-header">
-								<img src="images/icon-wifi.svg" alt="" />
+								<img src="src/images/icon-wifi.svg" alt="" />
 								<h2>Free WiFi</h2>
 							</div>
 							<p>
@@ -145,7 +59,7 @@
 						</li>
 						<li>
 							<div class="features-header">
-								<img src="images/icon-stocked.svg" alt="" />
+								<img src="src/images/icon-stocked.svg" alt="" />
 								<h2>Fully stocked</h2>
 							</div>
 							<p>
@@ -157,7 +71,7 @@
 						</li>
 						<li>
 							<div class="features-header">
-								<img src="images/icon-hottub.svg" alt="" />
+								<img src="src/images/icon-hottub.svg" alt="" />
 								<h2>Private hot tub</h2>
 							</div>
 							<p>
@@ -199,60 +113,23 @@
 						</section>
 
 						<ul class="testimonials" aria-label="Guest reviews">
-							<li>
-								<article class="testimonial">
-									<img
-										src="images/person.jpg"
-										class="test-img"
-										alt="Portrait of John Doe"
-									/>
-									<div class="test-left">
-										<p class="test-desc">
-											"My family and I absolutely love our cabin vacation!"
-										</p>
-										<p class="test-auth">— John Doe</p>
-									</div>
-								</article>
-							</li>
-							<li>
-								<article class="testimonial">
-									<img
-										src="images/person.jpg"
-										class="test-img"
-										alt="Portrait of John Doe"
-									/>
-									<div class="test-left">
-										<p class="test-desc">
-											"My family and I absolutely love our cabin vacation!"
-										</p>
-										<p class="test-auth">— John Doe</p>
-									</div>
-								</article>
-							</li>
-							<li>
-								<article class="testimonial">
-									<img
-										src="images/person.jpg"
-										class="test-img"
-										alt="Portrait of John Doe"
-									/>
-									<div class="test-left">
-										<p class="test-desc">
-											"My family and I absolutely love our cabin vacation!"
-										</p>
-										<p class="test-auth">— John Doe</p>
-									</div>
-								</article>
-							</li>
+							{{> testimonial imgSrc="src/images/person.jpg" imgAlt="Portrait of
+							John Doe" quote="My family and I absolutely love our cabin
+							vacation!" author="John Doe" }} {{> testimonial
+							imgSrc="src/images/person.jpg" imgAlt="Portrait of John Doe"
+							quote="My family and I absolutely love our cabin vacation!"
+							author="John Doe" }} {{> testimonial
+							imgSrc="src/images/person.jpg" imgAlt="Portrait of John Doe"
+							quote="My family and I absolutely love our cabin vacation!"
+							author="John Doe" }}
 						</ul>
 					</div>
 				</div>
 
-				<img src="images/fern.svg" class="fern" alt="" />
+				<img src="src/images/fern.svg" class="fern" alt="" />
 			</section>
 		</main>
 
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
-		<script src="index.js"></script>
+		<script type="module" src="/src/main.js"></script>
 	</body>
 </html>
