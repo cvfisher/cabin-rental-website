@@ -1,60 +1,72 @@
-body {
+/* Page-specific overrides for the Cabins page */
+
+.page-cabins {
 	background-color: var(--color-surface) !important;
 }
 
-.sub-hero {
+/* Example: make the shared header look different on this page only */
+.page-cabins .site-header--cabins {
+	background-color: var(--color-surface);
+}
+
+.page-cabins .site-header--cabins .logo,
+.page-cabins .site-header--cabins a {
+	color: var(--color-text);
+}
+
+.page-cabins .sub-hero {
 	background: url("/src/images/forest-bg-2.jpg") center / cover no-repeat;
 	min-height: 70vh; /* was height: 70vh */
 	padding-bottom: var(--space-4xl); /* makes room for overlap */
 	position: relative;
 }
 
-.main-copy {
+.page-cabins .main-copy {
 	background: none !important;
 }
 
-.featured-cabins {
+.page-cabins .featured-cabins {
 	background: none !important;
 }
-.cabins {
+.page-cabins .cabins {
 	position: relative;
 	margin-top: calc(var(--space-4xl) * -3);
 	z-index: 2;
 }
 
-.cabin-cta::after {
+.page-cabins .cabin-cta::after {
 	background: var(--color-text) !important;
 }
 
-.bread-wrapper {
+.page-cabins .bread-wrapper {
 	display: grid;
 
 	margin: 0 0 var(--space-sm) 0;
 }
 
-ul.breadcrumbs {
+.page-cabins ul.breadcrumbs {
 	display: flex;
 	margin-bottom: var(--space-xs);
 	font-size: var(--font-base);
 }
 
-ul.breadcrumbs li a {
+.page-cabins ul.breadcrumbs li a {
 	margin-right: var(--space-xs);
 	font-weight: bold;
 }
 
-.main-copy h1 {
+.page-cabins .main-copy h1 {
 	margin: 0 0 var(--space-md) 0;
 }
 
-.sub-desc {
+.page-cabins .sub-desc {
 	width: 60%;
 }
 
-.featured-cabins {
+.page-cabins .featured-cabins {
 	margin-top: 0;
 }
 
-.cabin-cta::after {
+.page-cabins .cabin-cta::after {
 	background: var(--color-text);
 }
