@@ -3,18 +3,27 @@ body {
 }
 
 .sub-hero {
-	background: url("/src/images/forest-bg-2.jpg");
-	background-size: cover;
-	height: 70vh;
+	background: url("/src/images/forest-bg-2.jpg") center / cover no-repeat;
+	min-height: 70vh; /* was height: 70vh */
+	padding-bottom: var(--space-4xl); /* makes room for overlap */
+	position: relative;
 }
 
 .main-copy {
 	background: none !important;
-	text-align: left;
 }
 
 .featured-cabins {
 	background: none !important;
+}
+.cabins {
+	position: relative;
+	margin-top: calc(var(--space-4xl) * -3);
+	z-index: 2;
+}
+
+.cabin-cta::after {
+	background: var(--color-text) !important;
 }
 
 .bread-wrapper {

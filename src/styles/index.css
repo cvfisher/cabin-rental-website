@@ -1,5 +1,6 @@
 @import "./booking.css";
 @import "./footer.css";
+
 /* ---------------------------
    Design Tokens
 --------------------------- */
@@ -204,7 +205,7 @@ img {
 }
 
 .main-copy {
-	text-align: center;
+	text-align: left;
 	background-color: var(--color-dark-translucent);
 	padding: var(--space-lg) var(--space-2xl) var(--space-lg) var(--space-lg);
 }
@@ -248,7 +249,6 @@ h1 span {
 .featured-cabins {
 	margin-top: var(--space-3xl);
 	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.721), transparent);
-	padding: 2em 1em;
 }
 
 .cabin-img {
@@ -326,6 +326,7 @@ h1 span {
 
 .last-section {
 	position: relative;
+	background-color: var(--color-page-bg);
 }
 
 .last-container {
@@ -496,9 +497,9 @@ h1 span {
 		margin-bottom: var(--space-2xl);
 	}
 
-	.featured-cabins {
-		margin-top: 0; /* aligns grid vertically with hero text on desktop */
-		padding-top: 0;
+	ul.featured-cabins {
+		margin: 0; /* aligns grid vertically with hero text on desktop */
+		padding: 0;
 	}
 
 	.features-header {
