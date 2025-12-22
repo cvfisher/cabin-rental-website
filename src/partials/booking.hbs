@@ -1,0 +1,175 @@
+<section class="booking" aria-labelledby="booking-title">
+	<div class="wrapper">
+		<div class="booking-card">
+			<header class="booking-card__header">
+				<h2 id="booking-title" class="booking-card__title">Reserve your cabin</h2>
+				<p class="booking-card__subtitle">
+					Select your dates, guests, and cabin. Totals update automatically.
+				</p>
+			</header>
+
+			<form
+				class="booking-form"
+				id="bookingForm"
+				action="#"
+				method="post"
+				novalidate
+			>
+				<!-- Dates -->
+				<fieldset class="booking-form__group" aria-labelledby="dates-legend">
+					<legend id="dates-legend" class="booking-form__legend">Dates</legend>
+
+					<div class="booking-form__grid">
+						<div class="field">
+							<label class="field__label" for="checkin">Check-in</label>
+							<input
+								class="field__control"
+								id="checkin"
+								name="checkin"
+								type="date"
+								required
+							/>
+							<p class="field__hint">Arrival date</p>
+						</div>
+
+						<div class="field">
+							<label class="field__label" for="checkout">Check-out</label>
+							<input
+								class="field__control"
+								id="checkout"
+								name="checkout"
+								type="date"
+								required
+							/>
+							<p class="field__hint">Departure date</p>
+						</div>
+					</div>
+				</fieldset>
+
+				<!-- Guests -->
+				<fieldset class="booking-form__group" aria-labelledby="guests-legend">
+					<legend
+						id="guests-legend"
+						class="booking-form__legend"
+					>Guests</legend>
+
+					<div class="booking-form__grid">
+						<div class="field">
+							<label class="field__label" for="adults">Adults</label>
+							<input
+								class="field__control"
+								id="adults"
+								name="adults"
+								type="number"
+								min="1"
+								max="6"
+								value="2"
+								required
+							/>
+							<p class="field__hint">Ages 16+</p>
+						</div>
+
+						<div class="field">
+							<label class="field__label" for="children">Children</label>
+							<input
+								class="field__control"
+								id="children"
+								name="children"
+								type="number"
+								min="0"
+								max="6"
+								value="0"
+							/>
+							<p class="field__hint">Ages 0–15</p>
+						</div>
+					</div>
+
+					<p class="field__hint" id="guestsHint">Maximum 6 guests per cabin.</p>
+					<p
+						class="field__hint"
+						id="guestsError"
+						role="status"
+						aria-live="polite"
+						hidden
+					></p>
+				</fieldset>
+
+				<!-- Cabin -->
+				<fieldset
+					class="booking-form__group booking-form__group--full"
+					aria-labelledby="cabin-legend"
+				>
+					<legend id="cabin-legend" class="booking-form__legend">Cabin</legend>
+
+					<div class="field">
+						<label class="field__label" for="cabin">Choose a cabin</label>
+						<select class="field__control" id="cabin" name="cabin" required>
+							<option value="" selected disabled>Select…</option>
+							<option value="cedar-crest" data-nightly="120">Cedar Crest Lodge —
+								£120 / night</option>
+							<option value="pine-haven" data-nightly="135">Pine Haven Retreat —
+								£135 / night</option>
+							<option value="silver-birch" data-nightly="145">Silver Birch
+								Hideaway — £145 / night</option>
+							<option value="lakeview" data-nightly="155">Lakeview Sanctuary —
+								£155 / night</option>
+							<option value="foxglove" data-nightly="165">Foxglove Cottage —
+								£165 / night</option>
+							<option value="ridgeline" data-nightly="175">Ridgeline Residence —
+								£175 / night</option>
+							<option value="willow-brook" data-nightly="185">Willow Brook Cabin
+								— £185 / night</option>
+							<option value="evergreen" data-nightly="205">Evergreen Panorama
+								Suite — £205 / night</option>
+							<option value="aurora" data-nightly="225">Aurora Summit Chalet —
+								£225 / night</option>
+						</select>
+						<p class="field__hint">Prices are per night.</p>
+					</div>
+				</fieldset>
+
+				<!-- Summary -->
+				<aside class="booking-summary" aria-label="Booking summary">
+					<h3 class="booking-summary__title">Summary</h3>
+
+					<dl class="summary">
+						<div class="summary__row">
+							<dt class="summary__term">Nights</dt>
+							<dd class="summary__value">
+								<output
+									id="nights"
+									name="nights"
+									for="checkin checkout"
+								>0</output>
+							</dd>
+						</div>
+
+						<div class="summary__row">
+							<dt class="summary__term">Estimated total</dt>
+							<dd class="summary__value summary__value--strong">
+								<output
+									id="total"
+									name="total"
+									for="checkin checkout cabin"
+								>£0</output>
+							</dd>
+						</div>
+					</dl>
+
+					<p class="booking-summary__note">Final price may vary based on
+						availability.</p>
+
+					<div class="booking-summary__actions">
+						<!-- IMPORTANT: remove disabled if you want it focusable -->
+						<button class="cta booking-summary__btn" type="submit">Check
+							availability</button>
+						<button
+							class="booking-summary__btn booking-summary__btn--ghost"
+							type="reset"
+						>Clear</button>
+					</div>
+				</aside>
+			</form>
+		</div>
+	</div>
+</section>

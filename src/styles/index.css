@@ -6,7 +6,9 @@
 	--color-page-bg: #d8eacb;
 	--color-primary: #72a84a;
 	--color-surface: #f2f2f2;
+	--color-surface-darker: #bcbcbc;
 	--color-text: #1a1a1a;
+	--color-dark-translucent: rgba(0, 0, 0, 0.721);
 
 	/* typography */
 	--font-sans: "Montserrat", sans-serif;
@@ -38,6 +40,10 @@
 	--size-icon-lg: 40px;
 	--border-thin: 1px;
 	--shadow-lg: 10px 10px 10px rgba(0, 0, 0, 0.2);
+
+	--focus-ring-color: rgba(114, 168, 74, 0.6);
+	--focus-ring-shadow: 0 0 0 3px rgba(114, 168, 74, 0.25);
+	--focus-ring-offset: 3px;
 }
 
 /* ---------------------------
@@ -62,6 +68,10 @@ main > section {
 /* ---------------------------
    Global-ish elements
 --------------------------- */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+	outline: 3px solid var(--focus-ring-color);
+	outline-offset: var(--focus-ring-offset);
+}
 
 a {
 	text-decoration: none;
@@ -107,7 +117,7 @@ img {
 	top: 0;
 	left: 0;
 	right: 0;
-	background: rgba(0, 0, 0, 0.721);
+	background-color: var(--color-dark-translucent);
 	z-index: 10;
 	transition: transform 0.25s ease;
 }
@@ -182,7 +192,7 @@ img {
 }
 
 .forest-hero {
-	background: url("/images/forest.jpg") center / cover no-repeat fixed;
+	background: url("/src/images/forest.jpg") center / cover no-repeat fixed;
 	color: var(--color-surface);
 }
 
@@ -192,8 +202,8 @@ img {
 
 .main-copy {
 	text-align: center;
-	background-color: rgba(0, 0, 0, 0.721);
-	padding: 2rem 1rem;
+	background-color: var(--color-dark-translucent);
+	padding: var(--space-lg) var(--space-2xl) var(--space-lg) var(--space-lg);
 }
 
 .subtitle {
@@ -218,6 +228,14 @@ h1 span {
 	margin-bottom: 0;
 	display: inline-block;
 	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+.cta:hover {
+	background-color: #618d3e;
+}
+
+.cta:active {
+	background-color: #4d6f31;
 }
 
 /* ---------------------------
@@ -381,6 +399,213 @@ h1 span {
 	pointer-events: none;
 }
 
+/* Form */
+/* ---------------------------
+   Booking Card + Form
+--------------------------- */
+
+.booking {
+	background: url(/src/images/cabin-rental.jpg) center / cover no-repeat fixed;
+}
+
+.booking-card {
+	background: var(--color-dark-translucent);
+	box-shadow: var(--shadow-lg);
+	padding: var(--space-2xl);
+	color: var(--color-surface);
+}
+
+.booking-card__header {
+	margin-bottom: var(--space-2xl);
+	text-align: left;
+}
+
+.booking-card__title {
+	font-size: var(--font-2xl);
+	margin: 0 0 var(--space-sm);
+}
+
+.booking-card__subtitle {
+	margin: 0;
+	line-height: var(--line-relaxed);
+	font-size: var(--font-md);
+	max-width: 60ch;
+}
+
+/* 2-column layout: form content left, summary right */
+.booking-form {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: var(--space-2xl);
+	align-items: start;
+}
+
+/* fieldsets */
+.booking-form__group {
+	border: 0;
+	padding: 0;
+}
+
+.booking-form__group--full {
+	grid-column: 1 / -1;
+	margin-bottom: 0;
+}
+
+.booking-form__legend {
+	font-weight: bold;
+	font-size: var(--font-lg);
+	margin-bottom: var(--space-md);
+}
+
+/* 2-column grid for date + guest pairs */
+.booking-form__grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: var(--space-lg);
+}
+
+/* Fields */
+.field__label {
+	display: block;
+	font-weight: bold;
+	margin-bottom: var(--space-xs);
+	font-size: var(--font-base);
+}
+
+.field__control {
+	width: 100%;
+	font: inherit;
+	font-size: var(--font-base);
+	color: var(--color-surface);
+
+	background: var(--color-dark-translucent);
+	border: var(--border-thin) solid var(--color-surface);
+	padding: var(--space-sm) var(--space-md);
+}
+
+.field__hint {
+	margin: var(--space-xs) 0 0;
+	font-size: var(--font-sm);
+	color: var(--color-surface-darker);
+}
+
+/* Summary card (right column) */
+.booking-summary {
+	background: var(--color-dark-translucent);
+	padding: var(--space-xl);
+	position: sticky;
+	top: var(--space-4xl);
+}
+
+.booking-summary__title {
+	margin: 0 0 var(--space-lg);
+	font-size: var(--font-lg);
+}
+
+.summary {
+	margin: 0;
+}
+
+.summary__row {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	padding-block: var(--space-md);
+	border-top: var(--border-thin) solid var(--color-surface);
+}
+
+.summary__row:first-child {
+	border-top: 0;
+	padding-top: 0;
+}
+
+.summary__term {
+	font-size: var(--font-base);
+	color: var(--color-surface);
+}
+
+.summary__value {
+	margin: 0;
+	font-size: var(--font-base);
+}
+
+.summary__value--strong {
+	font-weight: bold;
+	font-size: var(--font-xl);
+}
+
+.booking-summary__note {
+	margin: var(--space-lg) 0 0;
+	font-size: var(--font-sm);
+	line-height: var(--line-relaxed);
+	color: var(--color-surface-darker);
+}
+
+/* Buttons: primary uses your existing .cta */
+.booking-summary__actions {
+	margin-top: var(--space-xl);
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--space-md);
+}
+
+.booking-summary__btn {
+	width: 100%;
+	border: 0;
+	cursor: pointer;
+}
+
+.booking-summary__btn--ghost {
+	background: transparent;
+	color: var(--color-surface);
+	border: var(--border-thin) solid var(--color-surface);
+	padding: var(--space-md);
+	font-weight: bold;
+	font-size: var(--font-lg);
+}
+
+/* Make .cta behave like a button inside this layout */
+.cta.booking-summary__btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: var(--space-md);
+	margin: 0; /* override your .cta margin-top */
+}
+
+#guestsHint {
+	font-weight: bold;
+}
+
+#guestsError {
+	color: red;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+	.booking-form {
+		grid-template-columns: 1fr;
+	}
+
+	.booking-summary {
+		position: static;
+	}
+
+	.booking-summary__actions {
+		grid-template-columns: 1fr;
+	}
+}
+
+@media (max-width: 550px) {
+	.booking-form__grid {
+		grid-template-columns: 1fr;
+	}
+
+	.wrapper {
+		padding-inline: var(--space-lg); /* keeps mobile comfy */
+	}
+}
+
 /* ---------------------------
    Media queries
 --------------------------- */
@@ -488,7 +713,6 @@ h1 span {
 
 	.main-quote {
 		font-size: var(--font-3xl);
-		margin-top: var(--space-2xl);
 	}
 
 	.main-cite {
