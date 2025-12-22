@@ -483,6 +483,19 @@ h1 span {
 	padding: var(--space-sm) var(--space-md);
 }
 
+.field__control[type="date"] {
+	appearance: auto;
+	-webkit-appearance: auto;
+	color-scheme: dark;
+}
+
+.field__control[type="date"]::-webkit-calendar-picker-indicator {
+	opacity: 1;
+	display: block;
+	pointer-events: auto;
+	cursor: pointer;
+	color: white;
+}
 .field__hint {
 	margin: var(--space-xs) 0 0;
 	font-size: var(--font-sm);

@@ -1,5 +1,5 @@
 body {
-	background-color: var(--color-surface);
+	background-color: var(--color-surface) !important;
 }
 
 .sub-hero {
@@ -9,12 +9,12 @@ body {
 }
 
 .main-copy {
-	background: none;
+	background: none !important;
 	text-align: left;
 }
 
 .featured-cabins {
-	background: none;
+	background: none !important;
 }
 
 .bread-wrapper {
