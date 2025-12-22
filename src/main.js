@@ -1,4 +1,5 @@
 import { gsap } from "gsap";
+import "./styles/index.css";
 
 function byId(id) {
 	return document.getElementById(id);

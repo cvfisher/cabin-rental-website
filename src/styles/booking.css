@@ -1,3 +1,409 @@
+/* ---------------------------
+   Design Tokens
+--------------------------- */
+:root {
+	/* colors */
+	--color-page-bg: #d8eacb;
+	--color-primary: #72a84a;
+	--color-surface: #f2f2f2;
+	--color-surface-darker: #bcbcbc;
+	--color-text: #1a1a1a;
+	--color-dark-translucent: rgba(0, 0, 0, 0.721);
+
+	/* typography */
+	--font-sans: "Montserrat", sans-serif;
+
+	--font-xs: 0.75rem;
+	--font-sm: 0.875rem;
+	--font-base: 1rem;
+	--font-md: 1.25rem;
+	--font-lg: 1.563rem;
+	--font-xl: 1.953rem;
+	--font-2xl: 2.441rem;
+	--font-3xl: 3.052rem;
+
+	/* line-height token */
+	--line-relaxed: 1.9rem;
+
+	/* spacing scale (rule of 4) */
+	--space-xxs: 0.25rem; /* 4px  */
+	--space-xs: 0.5rem; /* 8px  */
+	--space-sm: 0.75rem; /* 12px */
+	--space-md: 1rem; /* 16px */
+	--space-lg: 1.5rem; /* 24px */
+	--space-xl: 2rem; /* 32px */
+	--space-2xl: 3rem; /* 48px */
+	--space-3xl: 4rem; /* 64px */
+	--space-4xl: 5rem; /* 80px */
+
+	/* sizing + visual tokens */
+	--size-icon-lg: 40px;
+	--border-thin: 1px;
+	--shadow-lg: 10px 10px 10px rgba(0, 0, 0, 0.2);
+
+	--focus-ring-color: rgba(114, 168, 74, 0.6);
+	--focus-ring-shadow: 0 0 0 3px rgba(114, 168, 74, 0.25);
+	--focus-ring-offset: 3px;
+}
+
+/* ---------------------------
+   Page
+--------------------------- */
+
+body {
+	background: var(--color-page-bg);
+	font-family: var(--font-sans);
+	color: var(--color-text);
+	font-size: var(--font-md);
+}
+
+/* Consistent vertical rhythm across main sections
+   - first section: top + bottom padding
+   - others: bottom padding only (so 1x --space-4xl between sections)
+*/
+main > section {
+	padding-block: var(--space-4xl);
+}
+
+/* ---------------------------
+   Global-ish elements
+--------------------------- */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+	outline: 3px solid var(--focus-ring-color);
+	outline-offset: var(--focus-ring-offset);
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+img {
+	width: 100%;
+	display: block;
+}
+
+/* generic centered wrapper */
+.wrapper {
+	max-width: 1200px;
+	margin-inline: auto;
+	padding-inline: var(--space-2xl);
+}
+
+/* flex helper */
+.flex {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-2xl);
+}
+
+/* no wrap helper */
+.no-wrap {
+	white-space: nowrap;
+}
+
+/* ---------------------------
+   Header / Nav
+--------------------------- */
+
+.site-header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	background-color: var(--color-dark-translucent);
+	z-index: 10;
+	transition: transform 0.25s ease;
+}
+
+.site-header--hidden {
+	transform: translateY(-100%);
+}
+
+.site-header .wrapper {
+	padding-inline: var(--space-sm);
+}
+
+.header-inner {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-block: var(--space-xs);
+}
+
+.logo {
+	font-weight: bold;
+	color: var(--color-surface);
+}
+
+/* hamburger / close buttons */
+.menu,
+.exit-btn {
+	background: none;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+}
+
+/* mobile nav overlay */
+.site-nav .nav {
+	opacity: 0;
+	position: fixed;
+	inset: 0;
+	width: 100%;
+	height: 100vh;
+	background: var(--color-primary);
+	padding-top: var(--space-4xl);
+	z-index: 100;
+	transform: translateX(100%); /* start offscreen RIGHT */
+	transition: transform 0.3s ease-in-out, opacity 0.3s ease;
+}
+
+.site-nav .nav.open-nav {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+.site-nav .nav li a {
+	font-size: var(--font-2xl);
+	font-weight: bold;
+	padding: var(--space-md);
+	display: block;
+	color: var(--color-surface);
+}
+
+.exit {
+	position: absolute;
+	right: var(--space-md);
+	top: var(--space-md);
+}
+
+/* ---------------------------
+   Hero
+--------------------------- */
+.forest-hero .wrapper.hero {
+	padding-top: var(--space-2xl);
+}
+
+.forest-hero {
+	background: url("/src/images/forest.jpg") center / cover no-repeat fixed;
+	color: var(--color-surface);
+}
+
+.hero {
+	padding-bottom: var(--space-2xl);
+}
+
+.main-copy {
+	text-align: center;
+	background-color: var(--color-dark-translucent);
+	padding: var(--space-lg) var(--space-2xl) var(--space-lg) var(--space-lg);
+}
+
+.subtitle {
+	margin-bottom: var(--space-sm);
+	padding: 0;
+}
+
+h1 span {
+	display: block;
+	font-size: var(--font-3xl);
+	clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
+}
+
+/* CTA button */
+.cta {
+	color: var(--color-surface);
+	background: var(--color-primary);
+	font-size: var(--font-lg);
+	font-weight: bold;
+	padding: var(--space-md);
+	margin-top: var(--space-2xl);
+	margin-bottom: 0;
+	display: inline-block;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.18);
+}
+
+.cta:hover {
+	background-color: #618d3e;
+}
+
+.cta:active {
+	background-color: #4d6f31;
+}
+
+/* ---------------------------
+   Featured cabins
+--------------------------- */
+
+.featured-cabins {
+	margin-top: var(--space-3xl);
+	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.721), transparent);
+	padding: 2em 1em;
+}
+
+.cabin-img {
+	box-shadow: var(--shadow-lg);
+	margin-bottom: var(--space-lg);
+}
+
+.cabin-title {
+	font-size: var(--font-lg);
+	font-weight: bold;
+	margin-bottom: var(--space-sm);
+}
+
+.cabin-desc,
+.features li p,
+.bio p {
+	line-height: var(--line-relaxed);
+	margin-bottom: var(--space-xl);
+}
+
+.cabin-cta {
+	display: flex;
+	gap: var(--space-sm);
+	justify-content: space-between;
+	margin: var(--space-md) 0 var(--space-2xl) 0;
+	font-weight: bold;
+	position: relative;
+	align-items: center;
+	padding-bottom: var(--space-sm);
+}
+
+.cabin-cta img {
+	width: 1rem;
+}
+
+.cabin-cta::after {
+	position: absolute;
+	content: "";
+	bottom: 0; /* ~12px, one-off positional tweak */
+	background: var(--color-surface);
+	width: 100%;
+	height: var(--border-thin);
+}
+
+/* ---------------------------
+   Amenities (middle section)
+--------------------------- */
+
+.feature-container {
+	background: var(--color-text);
+	color: var(--color-surface);
+	text-align: left;
+}
+
+.features-header {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-sm);
+	margin-bottom: var(--space-sm);
+}
+
+.features li:last-child p {
+	margin-bottom: 0;
+}
+
+/* vertical spacing between amenities on small screens */
+
+.features li img {
+	width: var(--size-icon-lg);
+}
+
+/* ---------------------------
+   Testimonials / last section
+--------------------------- */
+
+.last-section {
+	position: relative;
+}
+
+.last-container {
+	text-align: left;
+}
+
+.main-quote {
+	font-family: "Playfair", serif;
+	font-size: var(--font-2xl);
+	margin-bottom: var(--space-md);
+	font-style: italic;
+	text-align: center;
+}
+
+.main-cite {
+	margin-bottom: var(--space-4xl);
+	display: block;
+	color: #3b3b3b;
+	text-align: center;
+	font-size: var(--font-lg);
+}
+
+.bio h2 {
+	font-size: var(--font-lg);
+	margin-bottom: var(--space-sm);
+}
+
+.testimonials {
+	display: flex;
+	flex-direction: column;
+}
+
+.testimonials li + li {
+	margin-top: var(--space-2xl);
+}
+
+.testimonial {
+	text-align: center;
+}
+
+.test-img,
+.test-desc {
+	margin-inline: auto;
+	margin-bottom: var(--space-sm);
+}
+
+.test-img {
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+}
+
+.test-desc {
+	font-size: var(--font-lg);
+	font-family: "Playfair", serif;
+	font-style: italic;
+}
+
+.test-auth {
+	font-weight: bold;
+	color: #3b3b3b;
+	font-size: var(--font-sm);
+}
+
+/* decorative fern */
+.fern {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 1;
+	width: 80%;
+	opacity: 0.1;
+	margin: 0;
+	pointer-events: none;
+}
+
+/* Form */
+/* ---------------------------
+   Booking Card + Form
+--------------------------- */
+
 .booking {
 	background: url(/src/images/cabin-rental.jpg) center / cover no-repeat fixed;
 }
@@ -197,5 +603,142 @@
 
 	.wrapper {
 		padding-inline: var(--space-lg); /* keeps mobile comfy */
+	}
+}
+
+/* ---------------------------
+   Media queries
+--------------------------- */
+
+@media (min-width: 550px) {
+	/* hide mobile menu buttons */
+	.menu,
+	.exit {
+		display: none;
+	}
+
+	.wrapper.hero {
+		margin-top: var(--space-2xl);
+	}
+
+	.site-nav .nav {
+		opacity: 1;
+		position: static;
+		height: auto;
+		background: none;
+		transform: none;
+		padding-top: 0;
+		display: flex;
+		align-items: center;
+	}
+
+	.site-nav .nav li a {
+		padding: 0 var(--space-md);
+		font-weight: normal;
+		color: var(--color-surface);
+		font-size: var(--font-base);
+	}
+
+	.site-nav .nav li:last-child a {
+		padding-right: 0;
+	}
+
+	.site-nav .nav .active a {
+		font-weight: bold;
+	}
+
+	.site-nav .nav .res a {
+		color: var(--color-primary);
+		font-weight: bold;
+	}
+
+	/* cabin + amenities into grids, still within wrapper width */
+	.featured-cabins,
+	.features {
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: var(--space-2xl);
+	}
+
+	.cabin-cta {
+		margin-bottom: 0;
+	}
+}
+
+@media (min-width: 900px) {
+	/* full-width header bar, custom padding */
+	.site-header .wrapper {
+		max-width: none;
+		margin-inline: 0;
+		padding: var(--space-md) var(--space-lg);
+	}
+
+	.flex {
+		flex-direction: row;
+		align-items: flex-start;
+		gap: var(--space-4xl);
+	}
+
+	.main-copy {
+		width: 40%;
+		text-align: left;
+		margin-bottom: var(--space-2xl);
+	}
+
+	.subtitle {
+		margin: 0 0 var(--space-lg);
+		padding: 0;
+	}
+
+	h1 {
+		font-size: var(--font-2xl);
+		margin-bottom: var(--space-2xl);
+	}
+
+	.featured-cabins {
+		margin-top: 0; /* aligns grid vertically with hero text on desktop */
+		padding-top: 0;
+	}
+
+	.features-header {
+		align-items: flex-start;
+	}
+
+	.features {
+		text-align: left;
+	}
+	.features li p:last-child {
+		margin-bottom: var(--space-xl);
+	}
+
+	.main-quote {
+		font-size: var(--font-3xl);
+	}
+
+	.main-cite {
+		font-size: var(--font-lg);
+		margin-bottom: var(--space-4xl);
+	}
+
+	.bio p {
+		max-width: 60ch;
+	}
+
+	.testimonials {
+		width: 100%;
+	}
+
+	.testimonial {
+		display: flex;
+		gap: var(--space-lg);
+		justify-content: center;
+		align-items: flex-start;
+		background-color: var(--color-surface);
+		padding: var(--space-lg);
+		text-align: left;
+	}
+
+	.fern {
+		width: 20%;
 	}
 }
