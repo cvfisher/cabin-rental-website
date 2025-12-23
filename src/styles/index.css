@@ -250,7 +250,6 @@ h1 span {
 .featured-cabins {
 	margin-top: var(--space-3xl);
 	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.721), transparent);
-	padding: var(--space-lg);
 }
 
 .cabin-img {
