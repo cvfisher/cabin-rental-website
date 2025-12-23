@@ -199,6 +199,7 @@ img {
 .forest-hero {
 	background: url("/src/images/forest.jpg") center / cover no-repeat fixed;
 	color: var(--color-surface);
+	min-height: 100vh;
 }
 
 .hero {
