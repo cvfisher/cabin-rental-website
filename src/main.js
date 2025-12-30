@@ -137,7 +137,7 @@ function setupHeaderAutoHide() {
 		guestsError.classList.add("booking-form__error");
 	};
 
-	// Optional UX improvement: never allow totals to exceed MAX_GUESTS by clamping
+	// Never allow totals to exceed MAX_GUESTS by clamping
 	// based on which field changed most recently.
 	let lastChanged = null;
 	adultsEl?.addEventListener("input", () => (lastChanged = "adults"));
