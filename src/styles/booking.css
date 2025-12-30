@@ -201,3 +201,58 @@
 #guestsError {
 	color: red;
 }
+
+/* layout wrapper for text + card */
+.booking__layout {
+	display: grid;
+	gap: var(--space-2xl);
+	align-items: start;
+}
+
+/* left text block */
+.booking-copy {
+	background: var(--color-dark-translucent);
+	color: var(--color-surface);
+	padding: var(--space-2xl);
+	box-shadow: var(--shadow-lg);
+}
+
+.booking-copy__title {
+	margin: 0 0 var(--space-md);
+	font-size: var(--font-2xl);
+}
+
+.booking-copy__text {
+	margin: 0 0 var(--space-xl);
+	line-height: var(--line-relaxed);
+	max-width: 60ch;
+}
+
+.booking-copy__list {
+	margin: 0 0 var(--space-xl);
+	padding-left: 1.2em; /* optional */
+	list-style: disc;
+}
+
+.booking-copy__list li + li {
+	margin-top: var(--space-sm);
+}
+
+.booking-copy__cta {
+	margin-top: 0; /* your .cta adds margin-top; remove it here if you want */
+}
+
+/* desktop: text left, form right */
+@media (min-width: 900px) {
+	.booking__layout {
+		grid-template-columns: 1fr 1.2fr;
+		gap: var(--space-4xl);
+	}
+
+	/* optional: keep the card visually aligned and not too wide */
+	.booking-card {
+		max-width: 720px;
+		justify-self: end;
+		width: 100%;
+	}
+}
